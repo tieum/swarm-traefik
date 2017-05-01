@@ -61,21 +61,15 @@ docker service create \
     dockersamples/visualizer
 
 echo "### starting traefik..."
-docker service create  \
-  --name=traefik \
+docker service create \
+  --name traefik \
   --constraint=node.role==manager \
-  --publish 80:80 -p 8080:8080 \
-  --mount=type=bind,src=/var/lib/boot2docker/,dst=/ssl \
+  --publish 80:80 --publish 8080:8080 \
+  --mount type=bind,source=/var/run/docker.sock,target=/var/run/docker.sock \
+  --network testnetwork \
   traefik \
-  -l DEBUG \
-  -c /dev/null \
   --docker \
+  --docker.swarmmode \
   --docker.domain=traefik \
-  --docker.endpoint=tcp://$(docker-machine ip manager):3376 \
-  --docker.tls \
-  --docker.tls.ca=/ssl/ca.pem \
-  --docker.tls.cert=/ssl/server.pem \
-  --docker.tls.key=/ssl/server-key.pem \
-  --docker.tls.insecureSkipVerify \
   --docker.watch \
   --web
