@@ -6,17 +6,20 @@
 docker-machine create \
   --driver virtualbox \
   --engine-env 'DOCKER_OPTS="-H unix:///var/run/docker.sock"' \
+  --engine-opt experimental=true \
  manager
 
 #add two nodes to the cluster
 docker-machine create \
   --driver virtualbox \
   --engine-env 'DOCKER_OPTS="-H unix:///var/run/docker.sock"' \
+  --engine-opt experimental=true \
  node1
 
 docker-machine create \
   --driver virtualbox \
   --engine-env 'DOCKER_OPTS="-H unix:///var/run/docker.sock"' \
+  --engine-opt experimental=true \
  node2
 
 #swarm initialization
@@ -49,6 +52,7 @@ eval "$(docker-machine env manager)"
 docker network create --attachable --driver overlay testnetwork
 
 #add docker-swarm-visualizer on the manager (port 8888)
+echo "### starting visualizer..."
 docker service create \
     --name=viz \
     --publish=8888:8888/tcp \
@@ -56,6 +60,7 @@ docker service create \
     --mount=type=bind,src=/var/run/docker.sock,dst=/var/run/docker.sock \
     dockersamples/visualizer
 
+echo "### starting traefik..."
 docker service create  \
   --name=traefik \
   --constraint=node.role==manager \
