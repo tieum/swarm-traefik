@@ -55,7 +55,7 @@ docker network create --attachable --driver overlay testnetwork
 echo "### starting visualizer..."
 docker service create \
     --name=viz \
-    --publish=8888:8888/tcp \
+    --publish=8888:8080/tcp \
     --constraint=node.role==manager \
     --mount=type=bind,src=/var/run/docker.sock,dst=/var/run/docker.sock \
     dockersamples/visualizer
