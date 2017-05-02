@@ -20,8 +20,6 @@ To create the stack run **./init.sh**, it will call in order the necessary scrip
 
 - **reset.sh**: remove everything (docker machine / swarm service definition)
 
-   **TODO**: remove network overlay
-
 - **initcluster.sh**: create the swarm (1 manager, 2 nodes), with a web visualizer on the manager.
   for convenience we also start traefik on it
 
@@ -31,7 +29,7 @@ To create the stack run **./init.sh**, it will call in order the necessary scrip
 
    **TODO**: loop dynamically through all the node with role 'worker'
 
-- **createservices.sh**: create the ms1 and ms2 services
+- **createservices.sh**: create the ms1 and ms2 services: depending on your local setup, services can take up to 2 minutes to start the first time (because of the "docker pull" load on the registry)
 
    **TODO**: service name and image:tag should be parameters so we can use the same script in a git webhook
 
