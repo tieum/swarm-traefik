@@ -1,4 +1,6 @@
 #!/bin/bash
+BASEDIR=$(dirname "$0")
+
 eval $(docker-machine env manager)
 
 #stop services
@@ -16,3 +18,7 @@ eval $(docker-machine env -u)
 
 #remove network overlay
 docker network rm testnetwork
+
+#remove microservices cloned repos (we --force because of some .git files..)
+rm -rf $BASEDIR/../../../ms1
+rm -rf $BASEDIR/../../../ms2
