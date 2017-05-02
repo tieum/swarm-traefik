@@ -5,6 +5,7 @@ docker-machine ssh manager "docker service create \
   --name master-ms1 \
   --label traefik.port=4567 \
   --mode replicated \
+  --replicas 2 \
   --network testnetwork \
   --constraint=node.role==worker \
  ms1:master"
@@ -17,6 +18,7 @@ docker-machine ssh manager "docker service create \
   --name=master-ms2  \
   --label traefik.port=4567 \
   --mode replicated \
+  --replicas 2 \
   --network testnetwork \
   --constraint=node.role==worker \
  ms2:master"
