@@ -2,7 +2,7 @@
 ./scripts/reset.sh
 ./scripts/initcluster.sh
 ./scripts/buildms.sh
-./scripts/startservices.sh
+./scripts/createservices.sh
 
 #get swarm manager ip
 manager_ip=$(docker-machine ip manager)
