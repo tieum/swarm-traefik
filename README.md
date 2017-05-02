@@ -2,6 +2,18 @@
 
 Swarm cluster with traefik
 
+Once the cluster and the services are up, you can query the services with
+
+`curl -H Host:master-ms1.traefik $(docker-machine ip manager)`
+`curl -H Host:master-ms2.traefik $(docker-machine ip manager)`
+
+If you want to query without the Host header, you can also update /etc/hosts with
+```
+_ip_of_the_manager_	master-ms1.traefik`
+_ip_of_the_manager_	master-ms2.traefik`
+```
+
+
 To create the stack run **./init.sh**, it will call in order the necessary scripts stored in scripts/:
 
 - **reset.sh**: remove everything (docker machine / swarm service definition)
