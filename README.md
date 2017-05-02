@@ -13,17 +13,24 @@ If you want to query without the Host header, you can also update /etc/hosts wit
 _ip_of_the_manager_	master-ms1.example.com
 _ip_of_the_manager_	master-ms2.example.com
 ```
+You can watch in your browser the containers updating live with the docker swarm visualizer available at the url: `$(docker-machine ip manager):8888`
+
+The Traefik web dashboard is at the url: `$(docker-machine ip manager):8080`
+
 ## Hook ##
 
 Once the stack is up (see **Setup**), you can deploy other feature branches with **./hook.sh** _feature-branch_
-The script will check if the correponding branch exists on the repo, build/deploy it to the cluster, and advertise it on traefik with the URL _feature-branch_-ms[1-2].example.com. It will default to the master branch if the feature branch does not exist
+
+The script will check if the correponding branch exists on the repo, build/deploy it to the cluster, and advertise it on traefik with the URL _feature_branch_-ms[1-2].example.com. It will default to the master branch if the feature branch does not exist
 
 This project is already configured with 3 examples, each having a different result:
-- ./hook.sh feature1 (ms1 will use feature1, ms2 will use master)
-- ./hook.sh feature2 (ms1 will use master, ms2 will use feature2)
-- ./hook.sh feature3 (ms1 and ms2  will both use feature3)
 
-** TODO ** use the env var MS_URL when building the image for ms1 to communicate with ms2
+- `./hook.sh feature1` (ms1 will use feature1, ms2 will use master)
+- `./hook.sh feature2` (ms1 will use master, ms2 will use feature2)
+- `./hook.sh feature3` (ms1 and ms2  will both use feature3)
+
+
+**TODO** use the env var MS_URL when building the image for ms1 to communicate with ms2
 
 ## Setup
 
