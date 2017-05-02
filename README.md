@@ -39,3 +39,6 @@ To create the stack run **./init.sh**, it will call in order the necessary scrip
 
 ## Prerequisite
 if you are using OSX, you will need virtualbox installed: `brew cask install virtualbox`
+
+## Cleanup
+To clean everything that was created, run the **clean.sh** script located in the **scripts/utils/** directory
