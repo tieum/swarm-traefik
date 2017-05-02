@@ -14,6 +14,8 @@ _ip_of_the_manager_	master-ms1.example.com
 _ip_of_the_manager_	master-ms2.example.com
 ```
 
+## Setup
+
 To create the stack run **./init.sh**, it will call in order the necessary scripts stored in scripts/:
 
 - **reset.sh**: remove everything (docker machine / swarm service definition)
@@ -22,6 +24,8 @@ To create the stack run **./init.sh**, it will call in order the necessary scrip
 
 - **initcluster.sh**: create the swarm (1 manager, 2 nodes), with a web visualizer on the manager.
   for convenience we also start traefik on it
+
+  **TODO**: add local registry to push images on it
 
 - **buildms.sh**: builds the docker images for the 2 microservices, on both worker nodes
 
@@ -34,3 +38,6 @@ To create the stack run **./init.sh**, it will call in order the necessary scrip
    **TODO**: service name and image:tag should be parameters so we can use the same script in a git webhook
 
 - folder **ms1/** and **ms2/** contain 2 ruby sinatra sample apps, with their corresponding Dockerfile
+
+## Prerequisite
+if you are using OSX, you will need virtualbox installed: `brew cask install virtualbox`
