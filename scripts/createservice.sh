@@ -4,18 +4,22 @@
 ms=$1
 #microservice image tag
 tag=$2
-#number of tasks for the service (optional)
-if [ -z "$3" ]
+#number of tasks for the service
+replicas=$3
+
+#feature name used for traefik routing (optional)
+if [ -z "$4" ]
 then
-  replicas=1
+  feature=master
 else
-  replicas=$3
+  feature=$4
 fi
 
 #start $ms service
 docker-machine ssh manager "docker service create \
-  --name $tag-$ms \
+  --name $feature-$ms \
   --label traefik.port=4567 \
+  --label service.type=ms \
   --mode replicated \
   --replicas $replicas \
   --network testnetwork \
@@ -23,4 +27,4 @@ docker-machine ssh manager "docker service create \
  localhost:5000/$ms:$tag"
 
 #display $ms infos
-docker-machine ssh manager "docker service inspect $tag-$ms --pretty"
+docker-machine ssh manager "docker service inspect $feature-$ms --pretty"
