@@ -25,13 +25,9 @@ To create the stack run **./init.sh**, it will call in order the necessary scrip
 
 - **buildms.sh**: builds the docker images for the 2 microservices, on both worker nodes
 
-  **TODO**: docker image tag should be a parameter
-
    **TODO**: loop dynamically through all the node with role 'worker'
 
-- **createservices.sh**: create the ms1 and ms2 services: depending on your local setup, services can take up to 2 minutes to start the first time (because of the "docker pull" load on the registry)
-
-   **TODO**: service name and image:tag should be parameters so we can use the same script in a git webhook
+- **createservice.sh**: takes 3 argument: a microservice name, a tag, and an optional replicas number. It create the corresponding microservice with the correponding docker image. Depending on your local setup, services can take up to 2 minutes to start the first time (because of the "docker pull" load on the registry)
 
 - folder **ms1/** and **ms2/** contain 2 ruby sinatra sample apps, with their corresponding Dockerfile
 
