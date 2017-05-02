@@ -1,6 +1,7 @@
 #!/bin/bash
 ./scripts/initcluster.sh
-./scripts/buildms.sh
+./scripts/buildms.sh ms1 master
+./scripts/buildms.sh ms2 master
 ./scripts/createservices.sh
 
 #get swarm manager ip
