@@ -10,7 +10,7 @@ docker-machine ssh manager "docker service create \
  ms1:master"
 
 #display ms1 infos
-docker service inspect master-ms1 --pretty
+docker-machine ssh manager "docker service inspect master-ms1 --pretty"
 
   #start ms2 service
 docker-machine ssh manager "docker service create \
@@ -22,4 +22,4 @@ docker-machine ssh manager "docker service create \
  ms2:master"
 
 #display ms2 infos
-docker service inspect master-ms2 --pretty
+docker-machine ssh manager "docker service inspect master-ms2 --pretty"
