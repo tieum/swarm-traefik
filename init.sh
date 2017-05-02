@@ -2,7 +2,8 @@
 ./scripts/initcluster.sh
 ./scripts/buildms.sh ms1 master
 ./scripts/buildms.sh ms2 master
-./scripts/createservices.sh
+./scripts/createservice.sh ms1 master
+./scripts/createservice.sh ms2 master
 
 #get swarm manager ip
 manager_ip=$(docker-machine ip manager)
