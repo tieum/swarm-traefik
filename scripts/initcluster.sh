@@ -70,6 +70,6 @@ docker service create \
   traefik \
   --docker \
   --docker.swarmmode \
-  --docker.domain=traefik \
+  --docker.domain=example.com \
   --docker.watch \
   --web
