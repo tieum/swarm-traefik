@@ -7,7 +7,7 @@ ms=$1
 tag=$2
 
 function build_and_push(){
-  docker build -t $1:$2 $BASEDIR/../$1
+  docker build -t $1:$2 $BASEDIR/../../$1
   docker tag $1:$2 $registry/$1:$2
   docker push $registry/$1:$2
 }
