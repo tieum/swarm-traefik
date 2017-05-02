@@ -60,6 +60,7 @@ docker service create \
     --mount=type=bind,src=/var/run/docker.sock,dst=/var/run/docker.sock \
     dockersamples/visualizer
 
+#add traefik on the manager
 echo "### starting traefik..."
 docker service create \
   --name traefik \
@@ -73,3 +74,10 @@ docker service create \
   --docker.domain=example.com \
   --docker.watch \
   --web
+
+#add local registry on the manager
+docker service create \
+  --name registry \
+  --publish 5000:5000 \
+  --constraint=node.role==manager \
+  registry:2

@@ -8,7 +8,7 @@ docker-machine ssh manager "docker service create \
   --replicas 2 \
   --network testnetwork \
   --constraint=node.role==worker \
- ms1:master"
+ localhost:5000/ms1:master"
 
 #display ms1 infos
 docker-machine ssh manager "docker service inspect master-ms1 --pretty"
@@ -21,7 +21,7 @@ docker-machine ssh manager "docker service create \
   --replicas 2 \
   --network testnetwork \
   --constraint=node.role==worker \
- ms2:master"
+ localhost:5000/ms2:master"
 
 #display ms2 infos
 docker-machine ssh manager "docker service inspect master-ms2 --pretty"

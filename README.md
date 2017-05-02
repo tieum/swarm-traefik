@@ -25,8 +25,6 @@ To create the stack run **./init.sh**, it will call in order the necessary scrip
 - **initcluster.sh**: create the swarm (1 manager, 2 nodes), with a web visualizer on the manager.
   for convenience we also start traefik on it
 
-  **TODO**: add local registry to push images on it
-
 - **buildms.sh**: builds the docker images for the 2 microservices, on both worker nodes
 
   **TODO**: docker image tag should be a parameter

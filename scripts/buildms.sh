@@ -1,14 +1,16 @@
 #!/bin/bash
 BASEDIR=$(dirname "$0")
-#since we don't have a docker repository, we need to build the image on each node
-eval $(docker-machine env node1)
-docker build -t ms1:master $BASEDIR/../ms1
-docker build -t ms2:master $BASEDIR/../ms2
 
-eval $(docker-machine env node2)
-docker build -t ms1:master $BASEDIR/../ms1
-docker build -t ms2:master $BASEDIR/../ms2
+registry="localhost:5000"
 
-#check if everything is ok
-docker-machine ssh node1 "docker images"
-docker-machine ssh node2 "docker images"
+eval $(docker-machine env manager)
+docker build -t ms1:master $BASEDIR/../ms1
+docker tag ms1:master $registry/ms1:master
+docker push $registry/ms1:master
+docker build -t ms2:master $BASEDIR/../ms2
+docker tag ms2:master $registry/ms2:master
+docker push $registry/ms2:master
+
+#check the local registry
+docker-machine ssh manager "curl -s http://$registry/v2/ms1/tags/list"
+docker-machine ssh manager "curl -s http://$registry/v2/ms2/tags/list"
