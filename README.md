@@ -36,7 +36,7 @@ This project is already configured with 3 examples, each having a different resu
 
 To create the stack run **./init.sh**, it will call in order the necessary scripts stored in scripts/:
 
-- **clonemsrepo.sh**: this script clones the MS1 and MS2 git project, at the same level directory than this project
+- **clonemsrepo.sh**: this script clones the [MS1](https://github.com/tieum/ms1) and [MS2](https://github.com/tieum/ms2) git project, at the same level directory than this project
 
 - **initcluster.sh**: create the swarm (1 manager, 2 nodes), with a web visualizer and a local registry on the manager.
   for convenience we also start traefik on it
