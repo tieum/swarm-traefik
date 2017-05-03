@@ -30,7 +30,7 @@ This project is already configured with 3 examples, each having a different resu
 - `./hook.sh feature3` (ms1 and ms2  will both use feature3)
 
 
-**TODO** use the env var MS_URL when building the image for ms1 to communicate with ms2
+**TODO** override the env var MS_URL when lauching the ms1 services to communicate with ms2
 
 ## Setup
 
