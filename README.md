@@ -45,6 +45,8 @@ To create the stack run **./init.sh**, it will call in order the necessary scrip
 
 - **createservice.sh**: takes 4 arguments: a microservice name, a tag, a replicas number and it's traefik dns name. It create the corresponding microservice with the correponding docker image. Depending on your local setup, services can take up to 1 minute to start the first time (because of the "docker pull" load on the registry)
 
+**TODO** use an alpine image for the microservices to lighten to load on the registry
+
 ## Prerequisite
 if you are using OSX, you will need virtualbox installed: `brew cask install virtualbox`
 
