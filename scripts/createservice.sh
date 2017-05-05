@@ -15,6 +15,15 @@ else
   feature=$4
 fi
 
+case "$ms" in
+  "ms1")
+    otherms=ms2
+    ;;
+  "ms2")
+    otherms=ms1
+    ;;
+esac
+
 #start $ms service
 docker-machine ssh manager "docker service create \
   --name $feature-$ms \
@@ -24,6 +33,7 @@ docker-machine ssh manager "docker service create \
   --replicas $replicas \
   --network testnetwork \
   --constraint=node.role==worker \
+  -e 'MS_URL=http://${feature}-${otherms}:4567' \
  localhost:5000/$ms:$tag"
 
 #display $ms infos
